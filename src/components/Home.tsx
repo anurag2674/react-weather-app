@@ -15,6 +15,7 @@ const Home: React.FC<unknown> = (_props) => {
   useEffect(() => {
     if (city.trim().length < 2) {
       setDebouncedCityValue('');
+      setWeather('');
       return;
     }
     const setTimeOutId = setTimeout(() => {
@@ -43,8 +44,8 @@ const Home: React.FC<unknown> = (_props) => {
       });
   }, [debouncedCityValue]);
   return (
-    <div className="flex flex-col justify-center px-4 py-4">
-      <div className="flex gap-4 items-center">
+    <div className="px-4 py-4">
+      <div className="flex py-5 justify-center gap-4">
         <div>
           <label htmlFor="location">Location: </label>
           <input
