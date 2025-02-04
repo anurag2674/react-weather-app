@@ -7,11 +7,14 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import LoaderContextProvider from './common/LoaderContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <LoaderContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </LoaderContextProvider>
   </StrictMode>
 );

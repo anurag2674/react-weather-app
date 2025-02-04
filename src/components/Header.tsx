@@ -29,7 +29,12 @@ const Header: React.FC<unknown> = () => {
   return (
     <>
       <div className="flex justify-between items-center bg-sky-600 px-3 py-3">
-        <div className="text-black font-bold p-2 rounded-3xl cursor-pointer">React Weather App</div>
+        <div className="flex items-center gap-3 text-black font-bold p-2 rounded-3xl cursor-pointer">
+          <span>
+            <img width="50px" height="50px" src="./src/assets/weather.webp" />
+          </span>
+          React Weather App
+        </div>
         <div className="hidden md:block">
           <div className="flex justify-between items-center gap-3 cursor-pointer ">
             {pages.map((page, idx) => (

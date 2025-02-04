@@ -3,11 +3,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { WEATHER_API_KEY, WEATHER_API_URL } from '../constants/userLinks';
 import WeatherPanel from './WeatherPanel';
-
+import { useLoader } from '../hooks/useLoader';
 const Home: React.FC<unknown> = (_props) => {
   const [city, setCity] = useState<string>('');
   const [debouncedCityValue, setDebouncedCityValue] = useState<string>('');
   const [weather, setWeather] = useState<unknown>(null);
+  const { showLoader, hideLoader } = useLoader();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);
   };
@@ -29,6 +30,7 @@ const Home: React.FC<unknown> = (_props) => {
     if (!debouncedCityValue) {
       return;
     }
+    showLoader('Fetching weather data...');
     axios({
       url: '/weather',
       method: 'get',
@@ -36,9 +38,11 @@ const Home: React.FC<unknown> = (_props) => {
       params: { q: debouncedCityValue, appId: WEATHER_API_KEY, units: 'metric' },
     })
       .then((res: any) => {
+        hideLoader();
         setWeather(res['data']);
       })
       .catch((err: any) => {
+        hideLoader();
         setWeather('');
         console.log('Error while fetching location details', err);
       });
