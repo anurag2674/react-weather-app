@@ -2,7 +2,7 @@ import React from 'react';
 
 const About: React.FC<unknown> = (_props) => {
   return (
-    <div className="px-3 py-3 max-w-[800px]">
+    <div className="px-6 py-6 max-w-[900px]">
       <div className="py-4">
         <div className="text-3xl">About This App</div>
         <p>

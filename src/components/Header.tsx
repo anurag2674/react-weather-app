@@ -29,14 +29,14 @@ const Header: React.FC<unknown> = () => {
   return (
     <>
       <div className="flex justify-between items-center bg-sky-600 px-3 py-3">
-        <div className="flex items-center gap-3 text-black font-bold p-2 rounded-3xl cursor-pointer">
+        <Link to={'/'} className="flex items-center gap-3 text-black font-bold p-2 rounded-3xl cursor-pointer">
           <span>
-            <img width="50px" height="50px" src="./src/assets/weather.webp" />
+            <img width="50px" height="50px" src="weather.webp" alt="Weather logo" />
           </span>
           React Weather App
-        </div>
+        </Link>
         <div className="hidden md:block">
-          <div className="flex justify-between items-center gap-3 cursor-pointer ">
+          <div className="flex justify-between items-center gap-3 cursor-pointer">
             {pages.map((page, idx) => (
               <Link
                 to={page.path}

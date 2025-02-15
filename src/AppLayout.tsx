@@ -11,7 +11,7 @@ const AppLayout: React.FC<unknown> = (_props) => {
       <div className="sticky top-0 right-0 left-0">
         <Header />
       </div>
-      <div className="flex-1">
+      <div className="flex flex-1 justify-center items-center">
         <Routes>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />

@@ -1,12 +1,6 @@
 import React from 'react';
 const WeatherPanel: React.FC<any> = ({ weatherConditions }) => {
-  if (!weatherConditions) {
-    return (
-      <div className="flex flex-col items-center">
-        <div>Enter a city name</div>
-      </div>
-    );
-  }
+  if (!weatherConditions) return null;
   const { main, weather, name, sys, wind } = weatherConditions;
   const { ...temps } = main;
   const { ...currWeather } = weather[0];

@@ -1,9 +1,9 @@
-import Button from '@mui/material/Button';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { WEATHER_API_KEY, WEATHER_API_URL } from '../constants/userLinks';
 import WeatherPanel from './WeatherPanel';
 import { useLoader } from '../hooks/useLoader';
+import SearchIcon from '@mui/icons-material/Search';
 const Home: React.FC<unknown> = (_props) => {
   const [city, setCity] = useState<string>('');
   const [debouncedCityValue, setDebouncedCityValue] = useState<string>('');
@@ -48,22 +48,21 @@ const Home: React.FC<unknown> = (_props) => {
       });
   }, [debouncedCityValue]);
   return (
-    <div className="px-4 py-4">
-      <div className="flex py-5 justify-center gap-4">
-        <div>
-          <label htmlFor="location">Location: </label>
-          <input
-            className="border border-black solid px-2 py-2"
-            type="text"
-            name="location"
-            id="location"
-            value={city}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <Button variant="contained">Submit</Button>
-        </div>
+    <div className="p-6 min-w-120 min-h-150">
+      <label className="font-extrabold" htmlFor="location">
+        Location:{' '}
+      </label>
+      <div className="flex justify-between border border-black solid px-2 py-2 rounded-lg">
+        <input
+          className="focus:outline-none w-full"
+          type="text"
+          name="location"
+          id="location"
+          value={city}
+          onChange={handleChange}
+          placeholder="Enter a city name"
+        />
+        <SearchIcon className="opacity-50" />
       </div>
       <WeatherPanel weatherConditions={weather} />
     </div>
