@@ -1,10 +1,11 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
-import Contact from './components/Contact';
+const Home = lazy(() => import('./components/Home'));
+const About = lazy(() => import('./components/About'));
+const Contact = lazy(() => import('./components/Contact'));
 const AppLayout: React.FC<unknown> = (_props) => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -12,11 +13,13 @@ const AppLayout: React.FC<unknown> = (_props) => {
         <Header />
       </div>
       <div className="flex flex-1 justify-center items-center">
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Suspense>
       </div>
       <div>
         <Footer />
