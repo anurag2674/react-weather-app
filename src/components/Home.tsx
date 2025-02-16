@@ -48,13 +48,13 @@ const Home: React.FC<unknown> = (_props) => {
       });
   }, [debouncedCityValue]);
   return (
-    <div className="p-6 min-w-120 min-h-150">
+    <div className="p-6 w-full sm:w-[450px] min-h-150">
       <label className="font-extrabold" htmlFor="location">
-        Location:{' '}
+        Location:
       </label>
       <div className="flex justify-between border border-black solid px-2 py-2 rounded-lg">
         <input
-          className="focus:outline-none w-full"
+          className="focus:outline-none"
           type="text"
           name="location"
           id="location"
@@ -64,7 +64,9 @@ const Home: React.FC<unknown> = (_props) => {
         />
         <SearchIcon className="opacity-50" />
       </div>
-      <WeatherPanel weatherConditions={weather} />
+      <div className="w-full sm-[w-450px]">
+        <WeatherPanel weatherConditions={weather} />
+      </div>
     </div>
   );
 };

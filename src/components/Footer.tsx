@@ -5,7 +5,7 @@ import { GithubURL, LinkedInURL } from '../constants/userLinks';
 const Footer: React.FC<unknown> = () => {
   const date = new Date();
   return (
-    <div className="flex justify-between bg-gray-300 p-4">
+    <div className="flex flex-col sm:flex-row justify-between bg-gray-300 p-4">
       <div>
         <h3>Created by Anurag Giddalur</h3>
       </div>

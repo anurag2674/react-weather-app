@@ -9,7 +9,7 @@ const Contact = lazy(() => import('./components/Contact'));
 const AppLayout: React.FC<unknown> = (_props) => {
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="sticky top-0 right-0 left-0">
+      <div className="sticky top-0 right-0 left-0 z-10">
         <Header />
       </div>
       <div className="flex flex-1 justify-center items-center">

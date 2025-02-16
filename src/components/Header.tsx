@@ -1,7 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
-import React, { useState } from 'react';
-import { Link } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 type Page = {
   name: string;
   isSelected: boolean;
@@ -13,7 +13,7 @@ const Header: React.FC<unknown> = () => {
     { name: 'About', isSelected: false, path: '/about' },
     { name: 'Contact', isSelected: false, path: '/contact' },
   ]);
-  const [isOpen, setOpen] = useState<boolean | null>(null);
+  const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -25,10 +25,18 @@ const Header: React.FC<unknown> = () => {
     const newPages = [...pages.map((page) => ({ ...page, isSelected: page.name === pageName }))];
     setPages(newPages);
   };
-
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <>
-      <div className="flex justify-between items-center bg-sky-600 px-3 py-3">
+      <div className="flex flex-col sm:flex-row justify-between items-center bg-sky-600 px-3 py-3">
         <Link to={'/'} className="flex items-center gap-3 text-black font-bold p-2 rounded-3xl cursor-pointer">
           <span>
             <img width="50px" height="50px" src="weather.webp" alt="Weather logo" />
